@@ -17,9 +17,12 @@ depends:
 	fi
 
 
-build: depends
+local-clean-build:
+	rm -rf c_src/*.o priv/*.*
 	$(REBAR) compile
 
+build: depends
+	$(REBAR) compile
 
 etap: test/etap.beam test/util.beam
 	prove test/*.t
